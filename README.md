@@ -28,12 +28,12 @@ Design Considerations
 
 ## Considerations
 While creating the policy there are two option.
- * Using policy template
+* Using policy template
 
-    In case of policy template use "policy_template_file" for template file location and "policy_template_vars" for passing values to template.
- * Using policy statement
- 
-    In case of policy statement use "policy_statement" parameter for passing string converted json formatted aws policy.
+    In case of policy template use "policy_template_file" for template file location and "policy_template_vars" for passing values to template.
+* Using policy statement
+
+    In case of policy statement use "policy_statement" parameter for passing string converted json formatted aws policy.
 
 ## Resources
 
