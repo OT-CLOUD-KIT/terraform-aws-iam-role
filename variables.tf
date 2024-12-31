@@ -10,7 +10,7 @@ variable "bu" {
 }
 
 variable "app" {
-  description = "Name of the application, For ex: network, shared, ddp etc."
+  description = "Name of the application, For ex: network, shared, ot etc."
   type        = string
 }
 
