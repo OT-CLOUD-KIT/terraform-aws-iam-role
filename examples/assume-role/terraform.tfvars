@@ -10,7 +10,7 @@ policies = [
     name = "ec2-access"
     path = null
     desc = "Grants full access to EC2 resources"
-    policy_template_file = "./policy-documents/ec2-full-access-policy.tpl"
+    policy_template_file = "../../policy-documents/ec2-full-access-policy.tpl"
   }
 ]
 
@@ -20,7 +20,7 @@ roles = [
     path = "/"
     desc = "Allow BuildPiper to access EC2 resources"
     trust_policy = {
-      policy_template_file = "./policy-documents/assume-role-trust.tpl"
+      policy_template_file = "../../policy-documents/assume-role-trust.tpl"
       policy_template_vars = {
         "account_id" = "340752832494"
         "assume_role_name" = "BP_adminIAMrole"
