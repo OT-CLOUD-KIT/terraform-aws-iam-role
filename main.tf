@@ -49,7 +49,7 @@ locals {
 module "name_iam_policy" {
   for_each = local.policies
   # source   = "naming-tag"
-  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=de"
+  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
 
   bu       = var.bu
   env      = var.env
@@ -83,7 +83,7 @@ resource "aws_iam_policy" "policies" {
 module "name_iam_role" {
   for_each = { for i, role in var.roles : role["name"] => role }
   # source   = "naming-tag"
-  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=de"
+  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
 
   bu       = var.bu
   env      = var.env
@@ -156,7 +156,7 @@ resource "aws_iam_role_policy_attachment" "policy_arn_attachments" {
 module "name_iam_role_policy" {
   for_each = local.inline_policies
   # source   = "naming-tag"
-  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=de"
+  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
 
   bu       = var.bu
   env      = var.env
