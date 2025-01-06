@@ -89,7 +89,7 @@ module "name_iam_role" {
   env      = var.env
   app      = var.app
   tenant   = var.tenant
-  resource = "role-${each.value.name}"
+  resource = "${each.value.name}-role"
 }
 
 resource "aws_iam_role" "roles" {
