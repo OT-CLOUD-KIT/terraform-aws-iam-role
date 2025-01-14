@@ -1,8 +1,6 @@
 locals {
-
   policies = { for i, v in var.policies : var.policies[i]["name"] => v }
-
-
+  
   rolep = flatten([
     for role in var.roles : [
       for policy in role["policies"] : {
@@ -72,7 +70,7 @@ resource "aws_iam_policy" "policies" {
   name        = module.name_iam_policy[each.key].naming_tag[0] 
   path        = lookup(each.value, "path", null) == null ? var.policy_path : lookup(each.value, "path")
   description = lookup(each.value, "desc", null) == null ? var.policy_desc : lookup(each.value, "desc")
-  policy      = lookup(each.value, "policy_template_file") == null ? jsonencode(jsondecode(lookup(each.value, "policy_statement"))) :  templatefile(lookup(each.value, "policy_template_file"), lookup(each.value, "policy_template_vars"))
+  policy      = var.use_root_path_template ? lookup(each.value, "policy_template_file") == null ? jsonencode(jsondecode(lookup(each.value, "policy_statement"))) : templatefile(lookup(each.value, "policy_template_file"), lookup(each.value, "policy_template_vars")) : lookup(each.value, "policy_template_file") == null ? jsonencode(jsondecode(lookup(each.value, "policy_statement"))) : templatefile("${path.module}/policy-documents/${lookup(each.value, "policy_template_file")}", lookup(each.value, "policy_template_vars"))
 }
 
 # -------------------------------------------------------------------------------------------------
@@ -100,7 +98,7 @@ resource "aws_iam_role" "roles" {
   description = lookup(each.value, "desc", null) == null ? var.role_desc : lookup(each.value, "desc")
 
   # This policy defines who/what is allowed to use the current role
-  assume_role_policy = templatefile(lookup(each.value.trust_policy, "policy_template_file"), lookup(each.value.trust_policy, "policy_template_vars"))
+  assume_role_policy = var.use_root_path_template ? templatefile(lookup(each.value.trust_policy, "policy_template_file"), lookup(each.value.trust_policy, "policy_template_vars")) : templatefile("${path.module}/policy-documents/${lookup(each.value.trust_policy, "policy_template_file")}", lookup(each.value.trust_policy, "policy_template_vars"))
 
   # The boundary defines the maximum allowed permissions which cannot exceed.
   # Even if the policy has higher permission, the boundary sets the final limit

@@ -37,11 +37,15 @@ variable "policies_tags" {
   type        = map(string)
 }
 
+variable "use_root_path_template" {
+  description = "To enable or disable module Policy template"
+  type        = bool
+  default     = true
+}
+
 # -------------------------------------------------------------------------------------------------
 # Role definition
 # -------------------------------------------------------------------------------------------------
-
-
 variable "roles" {
   description = "A list of dictionaries defining all roles."
   type = list(object({
@@ -74,11 +78,9 @@ variable "permissions_boundaries" {
   default     = {}
 }
 
-
 # -------------------------------------------------------------------------------------------------
 # Default Policy settings
 # -------------------------------------------------------------------------------------------------
-
 variable "policy_path" {
   description = "The default path under which to create the policy if not specified in the policies list. You can use a single path, or nest multiple paths as if they were a folder structure. For example, you could use the nested path /division_abc/subdivision_xyz/product_1234/engineering/ to match your company's organizational structure."
   type = string
