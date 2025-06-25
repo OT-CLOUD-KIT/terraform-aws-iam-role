@@ -16,7 +16,7 @@ Terraform module for creating IAM roles and policies. An IAM role is an IAM iden
 
 ## Diagram
 
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/1db2db9d-8706-4d01-b98a-d55afa4a95b1)
 
 ---
 
@@ -66,7 +66,7 @@ module "standard_tags" {
 }
 
 module "assume_role" {
-  source = "../.."
+  source = "../"
 
   env = "d"
   app = "bp"
