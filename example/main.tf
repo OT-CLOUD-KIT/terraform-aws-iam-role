@@ -12,7 +12,7 @@ module "standard_tags" {
 }
 
 module "assume_role" {
-  source = "../"
+  source = "git@github.com:OT-CLOUD-KIT/terraform-aws-iam-role.git?ref=Feature"
 
   env = var.env
   app = var.app
