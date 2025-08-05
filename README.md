@@ -28,8 +28,6 @@ What does this module do ?
 3. Create AWS IAM roles of type assume role, service roles and other.
 4. Maps policies and roles together.
 
-What does this module does not do ?
-1. This module should not be used for IAM roles Anywhere.
 
 
 ## Modules
