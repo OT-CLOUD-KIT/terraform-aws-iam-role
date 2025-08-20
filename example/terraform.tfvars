@@ -40,19 +40,19 @@ roles = [
     policy_arns = [ "arn:aws:iam::aws:policy/ReadOnlyAccess" ]
   },
 
-  # {
-  #   name = "s3-access"
-  #   path = "/"
-  #   desc = "IAM role that can be assumed by role 'demo-a' to access S3 resources with limited (read-only) permissions."
-  #   trust_policy = {
-  #     policy_template_file = "policy-documents/assume-role-trust.tpl"
-  #     policy_template_vars = {
-  #       assume_type = "role"
-  #       assume_name = "demo-a"
-  #       account_id  = "509633460021"
-  #     }
-  #   }
-  #   policies    = ["s3-access"]
-  #   policy_arns = [ "arn:aws:iam::aws:policy/ReadOnlyAccess" ]
-  # }
+  {
+    name = "s3-access"
+    path = "/"
+    desc = "IAM role that can be assumed by role 'demo-a' to access S3 resources with limited (read-only) permissions."
+    trust_policy = {
+      policy_template_file = "policy-documents/assume-role-trust.tpl"
+      policy_template_vars = {
+        assume_type = "role"
+        assume_name = "demo-a"
+        account_id  = "509633460021"
+      }
+    }
+    policies    = ["s3-access"]
+    policy_arns = [ "arn:aws:iam::aws:policy/ReadOnlyAccess" ]
+  }
 ]

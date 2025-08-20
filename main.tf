@@ -3,18 +3,7 @@
 # Create defined Policies
 # -------------------------------------------------------------------------------------------------
 
-# module "name_iam_policy" {
-#   for_each = var.create_iam_policies ? local.policies : {}
 
-#   # source   = "naming-tag"
-#   source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
-
-#   bu       = var.bu
-#   env      = var.env
-#   app      = var.app 
-#   tenant   = var.tenant
-#   resource = "${each.value.name}-policy"
-# }
  
 # Create customer managed policies
 resource "aws_iam_policy" "policies" {
@@ -38,17 +27,7 @@ resource "aws_iam_policy" "policies" {
 # Create Roles
 # -------------------------------------------------------------------------------------------------
 
-# module "name_iam_role" {
 
-#   for_each = var.create_iam_roles ? { for role in var.roles : role["name"] => role } : {}
-#   source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
-
-#   bu       = var.bu
-#   env      = var.env
-#   app      = var.app
-#   tenant   = var.tenant
-#   resource = "${each.value.name}-role"
-# }
 
 resource "aws_iam_role" "roles" {
 
@@ -102,16 +81,6 @@ resource "aws_iam_role_policy_attachment" "policy_arn_attachments" {
   depends_on = [aws_iam_role.roles]
 }
 
-# module "name_iam_role_policy" {
-#   for_each = var.create_iam_policies ? local.policies : {}
-#   source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
-
-#   bu       = var.bu
-#   env      = var.env
-#   app      = var.app
-#   tenant   = var.tenant
-#   resource = "${each.value.name}-policy"
-# }
 
 resource "aws_iam_role_policy" "inline_policy_attachments" {
 

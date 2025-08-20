@@ -1,15 +1,7 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-# module "standard_tags" {
-#   source  = "git@github.com:OT-CLOUD-KIT/terraform-aws-standard-tagging.git?ref=dev"
-#   env     = var.env
-#   app     = var.app
-#   bu      = var.bu
-#   program = "edcil"
-#   team    = "lspl"
-#   region  = "us-east-1"
-# }
+
 
 module "assume_role" {
   source = "../"
@@ -17,10 +9,6 @@ module "assume_role" {
   env = var.env
   app = var.app
   owner = var.owner
-  # bu  = var.bu
-
-  # policies_tags =var.tags
-  # roles_tags    = var.tags
   
   create_iam_roles       = var.create_iam_roles
   create_iam_policies    = var.create_iam_policies
